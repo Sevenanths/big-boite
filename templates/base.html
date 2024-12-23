@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% block head %}
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <title>big boîte - {% block title %}{% endblock %}</title>
+    {% endblock %}
+</head>
+
+<body class="bg-dark">
+    <header class="px-3 py-2 text-bg-dark border-bottom fs-4 header">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="{{ url_for('welcome') }}" class="text-decoration-none text-bg-dark">big boîte</a>
+            </div>
+        </div>
+    </header>
+    <div class="container text-bg-dark mt-4">{% block content %}{% endblock %}</div>
+</body>
+
+</html>
