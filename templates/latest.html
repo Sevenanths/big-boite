@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Last capture{% endblock %}
+{% block content %}
+<div class="w-100 text-center">
+    {% if recent_file is not none %}
+      <p>Please find the last captured screenshot or video below.</p>
+      {% if recent_file["file_type"] == "0" %}
+      <p>
+        <img class="screenshot thumbnail big" src="{{ url_for('screenshot', filename=recent_file['file_name']) }}">
+      </p>
+      <a type="button" class="btn btn-primary" href="{{ url_for('download_screenshot', filename=recent_file['file_name']) }}">Download</a>
+      {% else %}
+      <p>
+        <img class="screenshot thumbnail big" src="{{ url_for('thumb', filename=recent_file['thumb_position_truncated']) }}">
+      </p>
+      <a type="button" class="btn btn-primary" href="{{ url_for('stream', filename=recent_file['file_name']) }}">Download</a>
+      {% endif %}
+    {% else %}
+      <p>No screenshots or videos were found.</p>
+    {% endif %}
+</div>
+{% endblock %}
